@@ -21,10 +21,16 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Metadata
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/holedaemon/jbep3
 
       - name: Build
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: jbep3:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

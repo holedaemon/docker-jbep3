@@ -24,6 +24,7 @@ jobs:
 
       - name: Build
         uses: docker/build-push-action@v3
-        context: .
-        push: true
-        tags: jbep3:latest
+        with:
+          context: .
+          push: true
+          tags: jbep3:latest

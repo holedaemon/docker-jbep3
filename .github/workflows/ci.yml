@@ -22,15 +22,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Metadata
-        uses: docker/metadata-action@v4
-        with:
-          images: ghcr.io/holedaemon/jbep3
-
-      - name: Build
+      - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: holedaemon/jbep3:latest

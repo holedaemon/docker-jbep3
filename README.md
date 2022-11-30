@@ -17,16 +17,30 @@ version: "3"
 
 services:
   jb:
-    image: holedaemon/jbep3
+    image: ghcr.io/holedaemon/jbep3
     container_name: "jb"
+    env_file: .env
     ports:
       - "27015:27015/udp"
       - "27015:27015/tcp"
       - "27020:27020/udp"
     volumes:
       - "$PWD/data:/home/steam/jbep3-dedicated"
-    environment:
-      SRCDS_SV_STEAMACCOUNT: "xDxddxddxdxd"
+```
+
+# Environment
+Customizable environment variables you can use to tweak SRCDS arguments. Feel free to PR or fork if one you need is missing and not otherwise configurable.
+
+```dockerfile
+SRCDS_PORT=27015
+SRCDS_TV_PORT=27020
+SRCDS_CLIENT_PORT=27005
+SRCDS_LAN="0" # Change to 1 to run in LAN mode
+SRCDS_MAXPLAYERS=24
+SRCDS_RCON_PASSWORD="idiot" # Can be overwritten by server.cfg
+SRCDS_SV_PASSWORD="idiot" # Can be overwritten by server.cfg
+SRCDS_MAP="crossfire" # Map to start on
+SRCDS_SV_STEAMACCOUNT="faketokenxDLOL" # GSLT; enables your server to appear in the server browser with default filters
 ```
 
 # License
@@ -35,4 +49,8 @@ services:
 
 # Credits
 
- Big shouts to [CM2Walki](https://github.com/CM2Walki/) for trudging through the shit that is hosting a Source engine game and making it maintainable.
+Big shouts to
+
+ * [CM2Walki](https://github.com/CM2Walki/) for trudging through the shit that is hosting a Source engine game and making it maintainable.
+
+* The [dedicated server Steam guide](https://steamcommunity.com/sharedfiles/filedetails/?id=1527732439) for giving me a starting basis, etc.

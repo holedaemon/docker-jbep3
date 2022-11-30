@@ -19,7 +19,6 @@ jobs:
         run: docker build --file Dockerfile --tag jbep3:latest .
       
       - name: Push to GitHub
-        if: ${{ github.repository == 'holedaemon/docker-jbep3' && github.event_name == 'push' && github.ref == 'refs/head/trunk' }}
         run: |
           echo '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
           docker tag jbep3:latest ghcr.io/holedaemon/jbep3:latest

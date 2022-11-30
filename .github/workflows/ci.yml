@@ -15,15 +15,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Log into registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: docker build --file Dockerfile --tag jbep3:latest .
       
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: holedaemon/jbep3:latest
+      - name: Push to GitHub
+        if: ${{ github.repository == 'holedaemon/docker-jbep3' && github.event_name == 'push' && github.ref == 'refs/head/trunk' }}
+        run: |
+          echo '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
+          docker tag jbep3:latest ghcr.io/holedaemon/jbep3:latest
+          docker push ghcr.io/holedaemon/jbep3:latest

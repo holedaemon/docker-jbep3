@@ -32,7 +32,8 @@ ENV SRCDS_PORT=27015 \
     SRCDS_RCON_PASSWORD="idiot" \
     SRCDS_SV_PASSWORD="idiot" \
     SRCDS_MAP="crossfire" \
-    SRCDS_SV_STEAMACCOUNT="faketokenxDLOL"
+    SRCDS_SV_STEAMACCOUNT="faketokenxDLOL" \
+    SRCDS_CUSTOM_ARGS=""
 
 USER ${USER}
 

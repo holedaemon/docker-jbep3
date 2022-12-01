@@ -24,4 +24,5 @@ bash "${STEAMAPPDIR}/srcds_run.sh" \
     +map "${SRCDS_MAP}" \
     +sv_lan "${SRCDS_LAN}" \
     +sv_password "${SRCDS_SV_PASSWORD}" \
-    +rcon_password "${SRCDS_RCON_PASSWORD}"
+    +rcon_password "${SRCDS_RCON_PASSWORD}" \
+    ${SRCDS_CUSTOM_ARGS}

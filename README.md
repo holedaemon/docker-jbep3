@@ -41,6 +41,7 @@ SRCDS_RCON_PASSWORD="idiot" # Can be overwritten by server.cfg
 SRCDS_SV_PASSWORD="idiot" # Can be overwritten by server.cfg
 SRCDS_MAP="crossfire" # Map to start on
 SRCDS_SV_STEAMACCOUNT="faketokenxDLOL" # GSLT; enables your server to appear in the server browser with default filters
+SRCDS_CUSTOM_ARGS="+ip 1.1.1.1" # Gets passed to SRCDS; for additional flags/arguments
 ```
 
 # License
